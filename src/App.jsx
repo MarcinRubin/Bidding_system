@@ -25,61 +25,6 @@ const suit_map = {
     BA: "BA",
 };
 
-const all_bids = [
-    {
-        height: "1",
-        suit: "C",
-        alert: true,
-        type: "GF",
-        meaning:
-            "1. 0-6 pc skład dowolny\n 2. 7-8 pc, 5$C 4$D lub 5$D 4$C \n 3. 10-18 pc, 5$C lub 4$C",
-        further_bids: [
-            {
-                height: "1",
-                suit: "D",
-                alert: true,
-                type: "GF",
-                meaning:
-                    "1. 0-6 pc skład dowolny\n 2. 7-8 pc, 5$C 4$D lub 5$D 4$C \n 3. 10-18 pc, 5$C lub 4$C",
-                further_bids: [
-                    {
-                        height: "1",
-                        suit: "H",
-                        alert: true,
-                        type: "GF",
-                        meaning: "1. 7-9 pc 4+$H",
-                        further_bids: [],
-                    },
-                    {
-                        height: "1",
-                        suit: "S",
-                        alert: true,
-                        type: "GF",
-                        meaning: "1. 7-9 pc 4+$S",
-                        further_bids: [],
-                    },
-                ],
-            },
-            {
-                height: "1",
-                suit: "H",
-                alert: false,
-                type: "F1",
-                meaning: "1. 7+ PC, 4+ $H ",
-                further_bids: [],
-            },
-            {
-                height: "1",
-                suit: "S",
-                alert: false,
-                type: "F1",
-                meaning: "1. 7+ PC, 4+ $S ",
-                further_bids: [],
-            },
-        ],
-    },
-];
-
 function App() {
     const [bids, setBids] = useState({});
     const [bidState, setBidState] = useState([0]);
