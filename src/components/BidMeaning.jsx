@@ -3,8 +3,8 @@ import { Text } from '@chakra-ui/react';
 import { BsSuitSpadeFill as Spade, BsSuitHeartFill as Heart, BsSuitDiamondFill as Diamond, BsSuitClubFill as Club} from "react-icons/bs";
 
 const suit_map = {
-  "$C": <Club/>,
-  "$D": <Diamond color="red"/>,
+  "$C": <Club display="inline"/>,
+  "$D": <Diamond color="red" display="inline"/>,
   "$H": <Heart color ="red"/>,
   "$S": <Spade/>,
 };
@@ -17,7 +17,7 @@ const BidMeaning = ({children}) => {
     return(
       <>
         {fragments.map((i, idx) => (
-          <React.Fragment key={idx}> {i} {suits && suits[idx] ? suit_map[suits[idx]]: ""}</React.Fragment>
+          <React.Fragment key={idx}>{i} {suits && suits[idx] ? suit_map[suits[idx]]: ""}</React.Fragment>
       ))}
       </>
     )
@@ -27,7 +27,7 @@ const BidMeaning = ({children}) => {
   
   return (
         lines.map((line, idx) => (
-          <Text display="flex" flexDirection="row" alignItems="center" justifyContent="left" key={idx}>
+          <Text as="span" display="inline-flex" justifyContent="center" alignItems="center" key={idx}>
             {render_line(line)}
           </Text>
         ))
@@ -35,3 +35,5 @@ const BidMeaning = ({children}) => {
 }
 
 export default BidMeaning
+
+//display="flex" flexDirection="row" alignItems="center" justifyContent="left"

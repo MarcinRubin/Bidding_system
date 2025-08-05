@@ -6,6 +6,7 @@ import {
     Input,
     Flex,
     VStack,
+    HStack
 } from "@chakra-ui/react";
 import {
     BsSuitSpadeFill as Spade,
@@ -14,7 +15,6 @@ import {
     BsSuitClubFill as Club,
 } from "react-icons/bs";
 import BidMeaning from "./components/BidMeaning";
-import NewBid from "./components/NewBid";
 import { useState, useRef } from "react";
 
 const suit_map = {
@@ -161,11 +161,11 @@ function App() {
                         <Table.Root key="table" size="sm" variant="outline" tableLayout="fixed">
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.ColumnHeader w="80px">
+                                    <Table.ColumnHeader textAlign="center" w="80px">
                                         Odzywka
                                     </Table.ColumnHeader>
-                                    <Table.ColumnHeader w="40px">Typ</Table.ColumnHeader>
-                                    <Table.ColumnHeader>
+                                    <Table.ColumnHeader textAlign="center" w="50px">Typ</Table.ColumnHeader>
+                                    <Table.ColumnHeader textAlign="center">
                                         Znaczenie
                                     </Table.ColumnHeader>
                                 </Table.Row>
@@ -174,22 +174,19 @@ function App() {
                                 {currentBid.further_bids.map((bid, idx) => (
                                     <Table.Row key={idx}>
                                         <Table.Cell
-                                            display="flex"
-                                            flexDirection="row"
-                                            alignItems="center"
                                             cursor="pointer"
                                             onClick={(e) =>
                                                 handleBidChange(idx)
                                             }
                                         >
-                                            {bid.height} {suit_map[bid.suit]}
+                                            <HStack gap={0}>{bid.height} {suit_map[bid.suit]}
                                             {bid.alert ? (
                                                 <Text as="span" color="blue">
                                                     (A)
                                                 </Text>
                                             ) : (
                                                 ""
-                                            )}
+                                            )}</HStack>
                                         </Table.Cell>
                                         <Table.Cell>
                                             <Text as="span">{bid.type}</Text>
@@ -201,25 +198,8 @@ function App() {
                                         </Table.Cell>
                                     </Table.Row>
                                 ))}
-
-                                <NewBid newBid={newBid} setNewBid={setNewBid} />
                             </Table.Body>
                         </Table.Root>
-                        <Button onClick={saveNewBid}>SAVE</Button>
-                        <Button>
-                            <a
-                                download="sample.txt"
-                                target="_blank"
-                                rel="noreferrer"
-                                href={URL.createObjectURL(file)}
-                                style={{
-                                    textDecoration: "inherit",
-                                    color: "inherit",
-                                }}
-                            >
-                                Download
-                            </a>
-                        </Button>
                     </VStack>
                 )}
             </Flex>
